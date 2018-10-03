@@ -1,4 +1,5 @@
 # https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/dns/kube-dns/kube-dns.yaml.base
+    #loadbalancer.openstack.org/floating-network-id: "53effaad-f857-4220-8354-8628c787101c"
 
 # Copyright 2016 The Kubernetes Authors.
 #
