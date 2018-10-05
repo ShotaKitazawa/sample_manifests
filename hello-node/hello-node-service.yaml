@@ -15,4 +15,3 @@ spec:
     name: hello-node
   type: LoadBalancer
 
-
