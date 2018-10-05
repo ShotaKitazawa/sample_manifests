@@ -1,0 +1,29 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: kube01
+  namespace: kube-system
+spec:
+  type: ExternalName
+  externalName: 192.168.38.21
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: kube02
+  namespace: kube-system
+spec:
+  type: ExternalName
+  externalName: 192.168.38.22
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: kube03
+  namespace: kube-system
+spec:
+  type: ExternalName
+  externalName: 192.168.38.23
+
