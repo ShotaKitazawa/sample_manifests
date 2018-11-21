@@ -1,9 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotations:
-    service.beta.kubernetes.io/openstack-internal-load-balancer: "false"
-    loadbalancer.openstack.org/floating-network-id: "53effaad-f857-4220-8354-8628c787101c"
+#  annotations:
+#    service.beta.kubernetes.io/openstack-internal-load-balancer: "false"
+#    loadbalancer.openstack.org/floating-network-id: "53effaad-f857-4220-8354-8628c787101c"
   labels:
     name: hello-node
   name: hello-node
