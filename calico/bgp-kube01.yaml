@@ -1,0 +1,35 @@
+apiVersion: projectcalico.org/v3
+kind: Node
+metadata:
+  name: kube01
+spec:
+  bgp:
+    asNumber: 65001
+    ipv4Address: 172.16.1.11
+  orchRefs:
+  - nodeName: kube01
+    orchestrator: k8s
+
+
+---
+
+apiVersion: projectcalico.org/v3
+kind: BGPPeer
+metadata:
+  name: kube01-vyos
+spec:
+  node: kube01
+  peerIP: 172.16.1.1
+  asNumber: 65000
+
+---
+
+#apiVersion: projectcalico.org/v3
+#kind: IPPool
+#metadata:
+#  name: kube01
+#spec:
+#  cidr: 172.16.1.1/32
+#  ipipMode: Never
+#  natOutgoing: true
+#  disabled: false

@@ -1,0 +1,24 @@
+apiVersion: projectcalico.org/v3
+kind: Node
+metadata:
+  name: kube02
+spec:
+  bgp:
+    #asNumber: 65002
+    #ipv4Address: 172.16.2.11
+    asNumber: 65001
+    ipv4Address: 172.16.1.12
+
+---
+
+apiVersion: projectcalico.org/v3
+kind: BGPPeer
+metadata:
+  name: kube02-vyos
+spec:
+  node: kube02
+  #peerIP: 172.16.2.1
+  peerIP: 172.16.1.1
+  asNumber: 65000
+
+---
