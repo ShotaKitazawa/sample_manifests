@@ -23,5 +23,5 @@ _EOF_
 kubectl delete virtualservices.networking.istio.io hello-world-test
 
 # Delete Oldest one
-kubectl delete rs $(kubectl get rs --sort-by=.metadata.creationTimestamp | tail -n+2 | head -n+1 | cut -d' ' -f1)
-kubectl delete destinationrules $(kubectl get destinationrules --sort-by=.metadata.creationTimestamp | tail -n+2 | head -n+1 | cut -d' ' -f1)
+kubectl delete rs $(kubectl get rs --sort-by=.metadata.creationTimestamp -oname | head -n1 | cut -d/ -f2)
+kubectl delete destinationrules $(kubectl get destinationrules --sort-by=.metadata.creationTimestamp -oname | head -n1 | cut -d/ -f2)
