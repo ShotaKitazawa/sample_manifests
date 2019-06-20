@@ -7,7 +7,7 @@ spec:
   hosts:
   - "*"
   gateways:
-  - hello-world-gateway
+  - hello-world
   http:
   - route:
     - destination:
