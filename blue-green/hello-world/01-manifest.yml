@@ -2,10 +2,9 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: hello-world-${ trigger.eventId }
+  name: hello-world
   labels:
     app: hello-world
-    tag: ${ trigger.eventId }
 spec:
   replicas: 3
   selector:
