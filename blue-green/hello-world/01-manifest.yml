@@ -18,7 +18,7 @@ spec:
         tag: ${ trigger.eventId }
     spec:
       containers:
-      - image: kanatakita/print-tag:${ trigger.eventId }
+      - image: kanatakita/print-tag:${ trigger.tag }
         name: hello-world
         ports:
         - containerPort: 8080
