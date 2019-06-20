@@ -21,7 +21,7 @@ spec:
       - image: kanatakita/print-tag:${ trigger.tag }
         name: hello-world
         ports:
-        - containerPort: 80
+        - containerPort: 8080
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
