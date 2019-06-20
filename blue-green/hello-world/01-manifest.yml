@@ -2,10 +2,10 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: hello-world-${ trigger.tag }
+  name: hello-world-${ trigger.id }
   labels:
     app: hello-world
-    tag: ${ trigger.tag }
+    tag: ${ trigger.id }
 spec:
   replicas: 3
   selector:
@@ -15,10 +15,10 @@ spec:
     metadata:
       labels:
         app: hello-world
-        tag: ${ trigger.tag }
+        tag: ${ trigger.id }
     spec:
       containers:
-      - image: kanatakita/print-tag:${ trigger.tag }
+      - image: kanatakita/print-tag:${ trigger.id }
         name: hello-world
         ports:
         - containerPort: 8080
@@ -41,19 +41,19 @@ spec:
     route:
     - destination:
         host: hello-world.default.svc.cluster.local
-        subset: ${ trigger.tag }
+        subset: ${ trigger.id }
         port:
           number: 80
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: hello-world-${ trigger.tag }
+  name: hello-world-${ trigger.id }
   labels:
-    tag: ${ trigger.tag }
+    tag: ${ trigger.id }
 spec:
   host: hello-world.default.svc.cluster.local
   subsets:
-  - name: ${ trigger.tag }
+  - name: ${ trigger.id }
     labels:
-      tag: ${ trigger.tag }
+      tag: ${ trigger.id }

@@ -12,6 +12,6 @@ spec:
   - route:
     - destination:
         host: hello-world.default.svc.cluster.local
-        subset: ${ trigger.tag }
+        subset: ${ trigger.id }
         port:
           number: 80
