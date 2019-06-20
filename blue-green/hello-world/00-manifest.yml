@@ -10,7 +10,7 @@ spec:
     targetPort: 8080
   selector:
     app: hello-world
-  type: LoadBalancer
+  type: ClusterIP
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
