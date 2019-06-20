@@ -40,14 +40,14 @@ spec:
     route:
     - destination:
         host: hello-world.default.svc.cluster.local
-        subset: ${ trigger.eventId }
+        subset: hello-world-test
         port:
           number: 80
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: hello-world-${ trigger.eventId }
+  name: hello-world-test
   labels:
     tag: ${ trigger.eventId }
 spec:
