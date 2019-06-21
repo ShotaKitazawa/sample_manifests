@@ -33,10 +33,9 @@ spec:
   - hello-world
   http:
   - match:
-    - uri:
-        prefix: "/test"
-    rewrite:
-      uri: "/"
+    - headers:
+        end-user:
+          exact: jason
     route:
     - destination:
         host: hello-world.default.svc.cluster.local
