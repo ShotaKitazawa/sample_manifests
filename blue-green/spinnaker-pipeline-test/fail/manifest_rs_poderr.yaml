@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: kanata
+  name: kanata
+  namespace: test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      eventId: ${ trigger.eventId }
+  template:
+    metadata:
+      labels:
+        eventId: ${ trigger.eventId }
+        cluster: for-kanata
+    spec:
+      containers:
+      - name: kanata
+        image: kanatakita/failed-container
+        ports:
+        - containerPort: 80
+
