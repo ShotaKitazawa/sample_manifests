@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: kanata
-        image: 'kanatakita/print-tag:${ #stage("SelectDeployVersion")["context"]["judgmentInput"] }'
+        image: 'kanatakita/print-tag:${parameters["POD_VERSION"]}'
         ports:
         - containerPort: 8080
 
