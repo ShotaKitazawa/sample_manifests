@@ -1,0 +1,25 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kanata-ingress
+  namespace: test
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "kanata"
+    #kubernetes.io/ingress.allow-http: "false"
+    #ingress.gcp.kubernetes.io/pre-shared-cert: "gcv-cloud"
+spec:
+  rules:
+    - host: kanata.local
+      http:
+        paths:
+          - backend:
+              serviceName: kanata
+              servicePort: 8081
+    - host: test-kanata.local
+      http:
+        paths:
+          - backend:
+              serviceName: kanata-test
+              servicePort: 8081
+
