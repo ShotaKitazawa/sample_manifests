@@ -9,7 +9,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 8081
+    - port: 8080
       protocol: TCP
       targetPort: 8080
   selector:
@@ -26,9 +26,19 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 8081
+    - port: 8080
       protocol: TCP
       targetPort: 8080
   selector:
     app: kanata
+
+---
+apiVersion: cloud.google.com/v1beta1
+kind: BackendConfig
+metadata:
+  name: monitoring-gui-backend-config
+  namespace: lab2alfa-app-monitoring
+spec:
+  securityPolicy:
+    name: kanata
 
