@@ -22,4 +22,15 @@ spec:
         image: kanatakita/failed-container
         ports:
         - containerPort: 80
-
+        readinessProbe:
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          httpGet:
+            path: /
+            port: 8080
+        livenessProbe:
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          httpGet:
+            path: /
+            port: 8080
