@@ -29,6 +29,8 @@ spec:
     - port: 8080
       protocol: TCP
       targetPort: 8080
+  selector:
+    dummy: dummy
 
 ---
 apiVersion: cloud.google.com/v1beta1
