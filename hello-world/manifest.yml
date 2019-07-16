@@ -33,3 +33,14 @@ spec:
   selector:
     app: hello-world
   type: LoadBalancer
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-world
+  labels:
+    kubernetes.io/cluster-service: "true"
+    addonmanager.kubernetes.io/mode: EnsureExists
+data:
+  hello-world: ${ parameters["hoge"] }
