@@ -29,8 +29,6 @@ spec:
     - port: 8080
       protocol: TCP
       targetPort: 8080
-  selector:
-    app: kanata
 
 ---
 apiVersion: cloud.google.com/v1beta1
@@ -41,4 +39,41 @@ metadata:
 spec:
   securityPolicy:
     name: kanata
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kanata-job
+  namespace: test
+spec:
+  template:
+    spec:
+      containers:
+        - name: hello-container
+          image: kanatakita/hello-container:latest
+          imagePullPolicy: Always
+      restartPolicy: Never
+
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: kanata-cronjob
+  namespace: test
+spec:
+  schedule: "* */1 * * *"
+  concurrencyPolicy: Replace
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: hello-container
+              image: kanatakita/hello-container:latest
+              imagePullPolicy: Always
+          restartPolicy: OnFailure
 
