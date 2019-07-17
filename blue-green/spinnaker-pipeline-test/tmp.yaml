@@ -1,0 +1,21 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: tmp
+  namespace: test
+spec:
+  schedule: "00 */1 * * *"
+  concurrencyPolicy: Replace
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: hello-container
+              image: kanatakita/hello-container:latest
+              imagePullPolicy: Always
+          restartPolicy: OnFailure
+

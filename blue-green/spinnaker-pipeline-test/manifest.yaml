@@ -65,7 +65,7 @@ metadata:
   name: kanata-cronjob
   namespace: test
 spec:
-  schedule: "* */1 * * *"
+  schedule: "00 */1 * * *"
   concurrencyPolicy: Replace
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 3
