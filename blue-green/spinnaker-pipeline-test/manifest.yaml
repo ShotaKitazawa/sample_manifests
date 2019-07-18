@@ -13,7 +13,7 @@ spec:
       protocol: TCP
       targetPort: 8080
   selector:
-    eventId: ${ trigger.eventId }
+    parentPipelineStageId: ${ trigger.parentPipelineStageId }
 
 ---
 apiVersion: v1
